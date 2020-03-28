@@ -23,8 +23,8 @@ const useStyle = makeStyles((theme) => ({
 
 function handleFlagClick(index,data,setData) {
     const url = "https://corona.lmao.ninja/v2/historical/" + data[index].country
-    fetch(URL).then(response => {
-        if( response.ok ) { return response }
+    fetch(url).then(response => {
+        if( response.ok ) { return response.json() }
         else { throw new Error("Something Went Worng"); }
         })
         .then( d => setData({
