@@ -14,8 +14,8 @@ const useStyle = makeStyles((theme) => ({
         flexWrap: 'wrap',
         '& > *': {
             margin: theme.spacing(3),
-            width: theme.spacing(900),
-            height:theme.spacing(80),
+            width: theme.spacing(700),
+            height:theme.spacing(70),
         },
     },
     loading: {
@@ -38,18 +38,18 @@ const App = () => {
                 })
                 .then( data => setData(data))
                 .catch(error => {console.log(error);})
-            },5000);
+            },1000);
     });
 
     return (
         <div >
             <CssBaseline />
-            <Container maxWidth='xl' >
+            <Container maxWidth='lg' >
                 <div className = {classes.paper}>
                     <Paper evaluation = {3} >
                         {
                             (data !== null) ?
-                            <AllCountry data={data} /> :
+                                <AllCountry data={data} /> :
                             <div className = {classes.loading} >
                                 <CircularProgress size = {100}/>
                             </div>

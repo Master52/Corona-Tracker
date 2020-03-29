@@ -11,9 +11,14 @@ const useStyle = makeStyles((theme) => ({
     gridlayout: {
         display : 'flex',
         flexWrap: 'wrap',
-        justifyContent: 'space-around',
-        alignItems: "stretch",
         margin: theme.spacing(2),
+        justifyContent: 'space-around',
+        overflow: 'hidden',
+    },
+    gridList: {
+        width : 700,
+        height : 500,
+
     },
     heading: {
         margin: theme.spacing(3),
@@ -38,7 +43,7 @@ const AllCountry = (props) => {
     const classes = useStyle();
     const [data,setData] = React.useState(null);
     return(
-        <div>
+        <div className>
         {
             (data === null) ?
                 <div className = {classes.gridlayout}>
@@ -47,7 +52,7 @@ const AllCountry = (props) => {
                     color = "primary">
                         All Country
                     </Typography>
-                    <GridList cols = {5} spacing = {5}>
+                    <GridList  className = {classes.gridList} cols = {4} spacing = {5}>
                         {
                             props.data.map((d,index) => (
                                 <GridListTile key = {d.country.flag} >
