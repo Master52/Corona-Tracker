@@ -7,7 +7,6 @@ import {XAxis,YAxis} from 'react-vis';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box'
 import Divider from '@material-ui/core/Divider';
-import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import AllCountry from './AllCountry';
