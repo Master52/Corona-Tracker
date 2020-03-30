@@ -10,9 +10,9 @@ Then run the following commands:
 This will install all the necessary dependancies.
 
 ### Usage
-    To run type:
-    ``npm start``
-    This will start the server.
+To run type:
+``npm start``
+This will start the server.
 
 
 ![Output](https://github.com/Master52/corona-tracker/blob/master/output.gif)
