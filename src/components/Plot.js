@@ -10,6 +10,7 @@ import Divider from '@material-ui/core/Divider';
 import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import AllCountry from './AllCountry';
 
 function getPlottingData(history)
 {
@@ -35,68 +36,65 @@ const useStyle = makeStyles((theme) => ({
 
 const Plot = (props) => {
     const classes = useStyle();
+    const [buttonClicked,setState] = React.useState(false)
      var items =  [
         {title: 'Deaths', color: 'red'},
         {title: 'Cases', color: 'blue'},
       ]
-    /*
-     * cases: 105726
-        todayCases: 1600
-        deaths: 1730
-        todayDeaths: 34
-        recovered: 2538
-        active: 101458
-        critical: 2494
-        casesPerOneMillion: 319
-        deathsPerOneMillion: 5
-    */
 
+    console.log(props);
 
     return(
         <div >
+            {
+             (buttonClicked === false) ?
             <Box display = "flex" flexDirection = "row">
                 <Box className = {classes.content} display = "flex" flexDirection = "column" >
+                    <Typography color = 'primary' variant = 'h3'>
+                        {props.overall[props.index].country}
+                    </Typography>
+                    <br />
                     <Typography color  = "textSecondary" variant = "body1" >
-                        Total Cases: {props.overall.cases}
-
+                        Total Cases: {props.overall[props.index].cases}
                     </Typography>
                     <Divider variant = "middel" />
 
                     <Typography color  = "primary" variant = "body1" >
-                        Today Cases: {props.overall.todayCases}
+                        Today Cases: {props.overall[props.index].todayCases}
                     </Typography>
                     <Divider variant = "middel" />
 
                     <Typography color  = "secondary" variant = "body1" >
-                         Total Death: {props.overall.deaths}
+                         Total Death: {props.overall[props.index].deaths}
                     </Typography>
                     <Divider variant = "middel" />
 
                     <Typography color  = "secondary" variant = "body1" >
-                        Today Death: {props.overall.todayDeaths}
+                        Today Death: {props.overall[props.index].todayDeaths}
                     </Typography>
                     <Divider variant = "middel" />
 
                     <Typography color  = "success" variant = "body1" >
-                        Recovered:  {props.overall.recovered}
+                        Recovered:  {props.overall[props.index].recovered}
                     </Typography>
                     <Divider variant = "middel" />
 
                     <Typography color  = "textSPrimary" variant = "body1" >
-                        Active:  {props.overall.recovered}
+                        Active:  {props.overall[props.index].active}
                     </Typography>
                     <Divider variant = "middel" />
 
                     <Typography color  = "error" variant = "body1" >
-                        Critical:  {props.overall.critical}
+                        Critical:  {props.overall[props.index].critical}
                     </Typography>
                     <Divider variant = "middel" />
                     <br />
                     <br />
-                    <Button color = 'primary' variant = 'contained' >
+                    <Button onClick  = {() => { setState(true) } } color = 'primary' variant = 'contained' >
                         Back
                     </Button>
                 </Box>
+
                 <Box display = "flex" className = {classes.graph} >
                     <XYPlot xType="time" height = {500} width = {600} >
                         <XAxis tickLabelAngle={-45} />
@@ -119,7 +117,9 @@ const Plot = (props) => {
                       items={items}
                     />
                 </Box>
-            </Box>
+            </Box> :
+            <AllCountry data = {props.overall} />
+            }
         </div>
 
 

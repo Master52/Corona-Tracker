@@ -11,17 +11,17 @@ const useStyle = makeStyles((theme) => ({
     gridlayout: {
         display : 'flex',
         flexWrap: 'wrap',
-        margin: theme.spacing(2),
+        margin: theme.spacing(1),
         justifyContent: 'space-around',
         overflow: 'hidden',
     },
     gridList: {
         width : 700,
-        height : 500,
+        height : 450,
 
     },
     heading: {
-        margin: theme.spacing(3),
+        margin: theme.spacing(1),
     },
 }));
 
@@ -33,8 +33,9 @@ function handleFlagClick(index,data,setData) {
         else { throw new Error("Something Went Worng"); }
         })
         .then( d => setData({
-            "overall": data[index],
-            "historic": d,}))
+            "overall": data,
+            "historic": d,
+            "index" : index}))
         .catch(error => {console.log(error);})
 
 }
@@ -70,7 +71,7 @@ const AllCountry = (props) => {
                     </GridList>
                 </div> :
                 <div>
-                    <Display overall = {data.overall} history = {data.historic} />
+                    <Display index = {data.index} overall = {data.overall} history = {data.historic} />
                 </div>
 
             }
